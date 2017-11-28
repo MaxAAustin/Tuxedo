@@ -7,4 +7,12 @@
     android:layout_height="match_parent"
     tools:context="com.maxaaustin.tuxedo.model.LoginActivity">
 
+    <com.twitter.sdk.android.core.identity.TwitterLoginButton
+        android:id="@+id/twitter_login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="84dp"
+        tools:layout_editor_absoluteY="150dp"
+        tools:ignore="MissingConstraints"/>
+
 </android.support.constraint.ConstraintLayout>
