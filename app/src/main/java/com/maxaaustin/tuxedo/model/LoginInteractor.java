@@ -1,5 +1,7 @@
 package com.maxaaustin.tuxedo.model;
 
+import com.twitter.sdk.android.core.TwitterSession;
+
 /**
  * Created by maaus on 11/28/2017.
  */
@@ -15,4 +17,6 @@ public interface LoginInteractor {
     }
 
     void login(String username, String password, com.maxaaustin.tuxedo.model.LoginInteractor.onLoginFinishedListener onLoginFinishedListener);
+
+    void login(TwitterSession session);
 }
