@@ -1,5 +1,39 @@
 <resources>
     <string name="app_name">Tuxedo</string>
-    <string name="com.twitter.sdk.android.CONSUMER_KEY">JBCOfGBbSgJboqwty4vBmDm8j</string>
-    <string name="com.twitter.sdk.android.CONSUMER_SECRET">B41U9FVx2tV28SHCgy19EQ5DbSNEfwwBCNXVztRmyU4Co20DGJ</string>
+    <string name="com.twitter.sdk.android.CONSUMER_KEY">IMk3fgM2AXuMVNVQFWgVwAWJb</string>
+    <string name="com.twitter.sdk.android.CONSUMER_SECRET">OfR0AcJdTOhPxzcR6Z8Zf66sOrrMFdKYtSr5vJVoIR1foR4aKk</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="favorites">Favorites</string>
+
+    <!-- Preferences Strings -->
+    <string-array name="genderArray">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Transgender</item>
+        <item>Non-Binary</item>
+        <item>Gender-Fluid</item>
+    </string-array>
+
+    <string-array name="orientationArray">
+        <item>Heterosexual</item>
+        <item>Gay</item>
+        <item>Lesbian</item>
+        <item>Bisexual</item>
+        <item>Queer</item>
+    </string-array>
+
+    <string-array name="religionArray">
+        <item>Agnostic</item>
+        <item>Atheism</item>
+        <item>Buddhism</item>
+        <item>Christianity</item>
+        <item>Hindu</item>
+        <item>Judaism</item>
+        <item>Islam</item>
+        <item>Pagan</item>
+    </string-array>
+    <!-- Preferences Strings -->
+
 </resources>

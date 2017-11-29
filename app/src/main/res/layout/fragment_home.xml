@@ -1,0 +1,51 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.maxaaustin.tuxedo.model.HomeFragment"
+    tools:layout_editor_absoluteY="25dp">
+
+    <FrameLayout
+        android:id="@+id/home_profile_pic_frame"
+        android:layout_width="150dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="55dp"
+        android:layout_marginTop="106dp"
+        app:layout_constraintBottom_toTopOf="@+id/main_username"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/home_profile_pic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/main_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="54dp"
+        android:text=""
+        android:textColor="@color/tw__composer_black"
+        app:layout_constraintBottom_toTopOf="@+id/home_favorites_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_profile_pic_frame" />
+
+    <Button
+        android:id="@+id/home_favorites_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="135dp"
+        android:text="@string/favorites"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_username" />
+
+</android.support.constraint.ConstraintLayout>

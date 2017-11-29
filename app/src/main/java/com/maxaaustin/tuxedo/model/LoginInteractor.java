@@ -16,7 +16,5 @@ public interface LoginInteractor {
         void onSuccess();
     }
 
-    void login(String username, String password, com.maxaaustin.tuxedo.model.LoginInteractor.onLoginFinishedListener onLoginFinishedListener);
-
     void login(TwitterSession session);
 }
