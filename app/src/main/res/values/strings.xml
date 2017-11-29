@@ -3,7 +3,6 @@
     <string name="com.twitter.sdk.android.CONSUMER_KEY">IMk3fgM2AXuMVNVQFWgVwAWJb</string>
     <string name="com.twitter.sdk.android.CONSUMER_SECRET">OfR0AcJdTOhPxzcR6Z8Zf66sOrrMFdKYtSr5vJVoIR1foR4aKk</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="favorites">Favorites</string>
 
@@ -34,6 +33,12 @@
         <item>Islam</item>
         <item>Pagan</item>
     </string-array>
+    <string name="title_activity_tabbed">Tabbed</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_3">Tab 3</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
     <!-- Preferences Strings -->
 
 </resources>
