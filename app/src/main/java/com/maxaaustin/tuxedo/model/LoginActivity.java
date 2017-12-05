@@ -9,14 +9,18 @@ import android.widget.Toast;
 
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterAuthToken;
 import com.twitter.sdk.android.core.TwitterCore;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
+import retrofit2.Retrofit;
+
 public class LoginActivity extends AppCompatActivity implements LoginInteractor{
 
     TwitterLoginButton mTwitterLoginButton;
+
 
 
     @Override
@@ -25,11 +29,14 @@ public class LoginActivity extends AppCompatActivity implements LoginInteractor{
         com.twitter.sdk.android.core.Twitter.initialize(this);
         setContentView(com.maxaaustin.tuxedo.R.layout.activity_login);
 
+
+
         mTwitterLoginButton = (TwitterLoginButton) findViewById(com.maxaaustin.tuxedo.R.id.twitter_login_button);
         mTwitterLoginButton.setCallback(new Callback<TwitterSession>() {
             @Override
             public void success(Result<TwitterSession> result) {
 
+                TwitterAuthConfig twitterAuthConfig = TwitterCore.getInstance().getAuthConfig();
                 TwitterSession session = TwitterCore.getInstance().getSessionManager().getActiveSession();
                 TwitterAuthToken authToken = session.getAuthToken();
                 String token = authToken.token;
@@ -47,9 +54,9 @@ public class LoginActivity extends AppCompatActivity implements LoginInteractor{
 
     @Override
     public void login(TwitterSession session) {
-        String username = session.getUserName();
+
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        intent.putExtra("username", username);
+
         startActivity(intent);
     }
     /**
@@ -65,5 +72,6 @@ public class LoginActivity extends AppCompatActivity implements LoginInteractor{
 
         mTwitterLoginButton.onActivityResult(requestCode, resultCode, data);
     }
+
 
 }

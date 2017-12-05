@@ -19,4 +19,8 @@
 
     <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
+    <style name= "PreferencesStyle" parent="Widget.AppCompat.Spinner.DropDown">
+
+    </style>
+
 </resources>

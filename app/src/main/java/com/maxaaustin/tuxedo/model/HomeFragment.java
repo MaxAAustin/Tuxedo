@@ -12,6 +12,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.maxaaustin.tuxedo.R;
+import com.maxaaustin.tuxedo.view.UserProfileClient;
+import com.squareup.picasso.Picasso;
+import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.core.TwitterCore;
+import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.models.User;
+
+import retrofit2.Call;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 
 /**
@@ -23,12 +34,13 @@ import com.maxaaustin.tuxedo.R;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
-
-    private TextView mUsername;
-    private ImageView mProfilePicture;
     private Button mFavorites;
-
+    private ImageView mProfilePicture;
+    private TextView mUsername;
     private OnFragmentInteractionListener mListener;
+    final TwitterSession sess = TwitterCore.getInstance().getSessionManager().getActiveSession();
+    final TwitterAuthConfig profAuth = TwitterCore.getInstance().getAuthConfig();
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -56,6 +68,37 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+//        Retrofit retro = twitterUserRetrofit(sess, profAuth);
+//        UserProfileClient userProfileClient = retro.create(UserProfileClient.class);
+//        Call<User> call = userProfileClient.getUserDetails(sess.getUserName());
+//        call.enqueue(new com.twitter.sdk.android.core.Callback<com.twitter.sdk.android.core.models.User>() {
+//
+//            /**
+//             * Called when call completes successfully.
+//             *
+//             * @param result the parsed result.
+//             */
+//            @Override
+//            public void success(com.twitter.sdk.android.core.Result<com.twitter.sdk.android.core.models.User> result) {
+//                User user = result.data;
+//                mUsername = new android.widget.TextView(getContext()).findViewById(com.maxaaustin.tuxedo.R.id.main_username);
+//                mProfilePicture = new ImageView(getContext()).findViewById(com.maxaaustin.tuxedo.R.id.home_profile_pic);
+//                mUsername.setText(user.name);
+//                Picasso.with(getContext()).load(user.profileImageUrl).into(mProfilePicture);
+//            }
+//
+//            /**
+//             * Unsuccessful call due to network failure, non-2XX status code, or unexpected
+//             * exception.
+//             *
+//             * @param exception
+//             */
+//            @Override
+//            public void failure(com.twitter.sdk.android.core.TwitterException exception) {
+//                android.widget.Toast.makeText(HomeFragment.this, "Failed to retrieve user details.", android.widget.Toast.LENGTH_LONG).show();
+//            }
+//        });
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
@@ -98,4 +141,16 @@ public class HomeFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+    /**
+     * Makes a REST API call to the Twitter REST API, passing in the current TwitterSession and OAuth configuration using the Retrofit and OkHttpClient libraries included with the Twitter Kit Android SDK.
+     * @param sess
+     * @param authConfig
+     * @return
+     */
+    public Retrofit twitterUserRetrofit(TwitterSession sess, TwitterAuthConfig authConfig){
+        return new Retrofit.Builder()
+                .baseUrl("https://api.twitter.com/1.1/").addConverterFactory(retrofit2.converter.gson.GsonConverterFactory.create()).client(new okhttp3.OkHttpClient.Builder().addInterceptor(new com.twitter.sdk.android.core.internal.network.OAuth1aInterceptor(sess, authConfig)).build()).build();
+    }
+
 }

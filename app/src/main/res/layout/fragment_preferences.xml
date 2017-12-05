@@ -1,13 +1,88 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.maxaaustin.tuxedo.model.PreferencesFragment">
+    android:layout_height="wrap_content"
+    tools:context="com.maxaaustin.tuxedo.model.PreferencesFragment"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/age_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/age"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        />
+    <EditText
+        android:id="@+id/age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/age_title"/>
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/religion_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/religion"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/age"/>
+
+    <Spinner
+        android:id="@+id/religion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/religion_title"/>
+
+    <TextView
+        android:id="@+id/political_view_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/political_views"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/religion"/>
+
+    <SeekBar
+        android:id="@+id/political_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/political_view_title"/>
+
+    <TextView
+        android:id="@+id/gender_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gender"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/political_view"/>
+
+    <Spinner
+        android:id="@+id/gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/gender_title"/>
+
+    <TextView
+        android:id="@+id/orientation_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/orientation"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/gender"/>
+
+    <Spinner
+        android:id="@+id/orientation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/age"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/orientation_title"
+        />
+</RelativeLayout>
