@@ -16,5 +16,5 @@ public interface LoginInteractor {
         void onSuccess();
     }
 
-    void login(TwitterSession session);
+    void login(TwitterSession session) throws Exception;
 }

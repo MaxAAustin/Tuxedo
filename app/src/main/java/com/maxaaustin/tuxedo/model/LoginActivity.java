@@ -1,32 +1,40 @@
 package com.maxaaustin.tuxedo.model;
 
 import android.content.Intent;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.DefaultLogger;
 import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterAuthToken;
+import com.twitter.sdk.android.core.TwitterConfig;
 import com.twitter.sdk.android.core.TwitterCore;
+import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
-import retrofit2.Retrofit;
-
-public class LoginActivity extends AppCompatActivity implements LoginInteractor{
+public class LoginActivity extends AppCompatActivity  {
+    private final String CONSUMER_KEY= "IMk3fgM2AXuMVNVQFWgVwAWJb";
+    private final String CONSUMER_SECRET= "OfR0AcJdTOhPxzcR6Z8Zf66sOrrMFdKYtSr5vJVoIR1foR4aKk";
 
     TwitterLoginButton mTwitterLoginButton;
 
+    private static final String TAG = "User Login Activity";
+
+    private TwitterAuthConfig auth = new TwitterAuthConfig(CONSUMER_KEY, CONSUMER_SECRET);
+    private String picUrl = "";
+    private String userName= "";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        com.twitter.sdk.android.core.Twitter.initialize(this);
+        TwitterConfig config = new TwitterConfig.Builder(this).logger(new DefaultLogger(android.util.Log.DEBUG)).twitterAuthConfig(auth).debug(true).build();
+        Twitter.initialize(config);
         setContentView(com.maxaaustin.tuxedo.R.layout.activity_login);
 
 
@@ -46,19 +54,18 @@ public class LoginActivity extends AppCompatActivity implements LoginInteractor{
             }
 
             @Override
-            public void failure(com.twitter.sdk.android.core.TwitterException exception) {
+            public void failure(TwitterException exception) {
                 Toast.makeText(LoginActivity.this, "Please try again!",Toast.LENGTH_LONG).show();
             }
         });
     }
 
-    @Override
     public void login(TwitterSession session) {
-
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-
         startActivity(intent);
     }
+
+
     /**
      * Dispatch incoming result to the correct fragment.
      *
@@ -72,6 +79,5 @@ public class LoginActivity extends AppCompatActivity implements LoginInteractor{
 
         mTwitterLoginButton.onActivityResult(requestCode, resultCode, data);
     }
-
 
 }

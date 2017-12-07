@@ -53,7 +53,7 @@ public class TweetFragment extends Fragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        final SearchTimeline searchTimeline = new SearchTimeline.Builder().query("#hiking").maxItemsPerRequest(50).build();
+        final SearchTimeline searchTimeline = new SearchTimeline.Builder().query("#MeToo").maxItemsPerRequest(50).build();
 
         final TweetTimelineRecyclerViewAdapter adapter = new TweetTimelineRecyclerViewAdapter.Builder(getContext()).setTimeline(searchTimeline).setViewStyle(com.maxaaustin.tuxedo.R.style.tw__TweetDarkStyle).build();
         recyclerView.setAdapter(adapter);

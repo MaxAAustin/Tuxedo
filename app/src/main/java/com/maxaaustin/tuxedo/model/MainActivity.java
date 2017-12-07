@@ -10,12 +10,10 @@ import com.maxaaustin.tuxedo.model.TweetFragment.OnFragmentInteractionListener;
 
 public class MainActivity extends AppCompatActivity implements HomeFragment.OnFragmentInteractionListener, OnFragmentInteractionListener, PreferencesFragment.OnFragmentInteractionListener /*implements MainActivityInterface*/{
 
+    //com.maxaaustin.tuxedo.model.LoginActivity login = getIntent().getParcelableExtra("User");
+
     public static MainActivity instance;
     TabLayout mAllTabs;
-    ViewPagerAdapter pagerAdapter;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,5 +77,51 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnFr
 //            }
 //        });
 //    }
+
+    private class ViewPagerAdapter extends android.support.v4.app.FragmentStatePagerAdapter {
+
+        int tabNum;
+
+        private final java.util.List<android.support.v4.app.Fragment> mFragmentList = new java.util.ArrayList<>();
+        private final java.util.List<String> mFragNameList = new java.util.ArrayList<>();
+
+        public ViewPagerAdapter(android.support.v4.app.FragmentManager manager, int tabNum) {
+
+            super(manager);
+            this.tabNum = tabNum;
+        }
+
+        @Override
+        public android.support.v4.app.Fragment getItem(int position) {
+            switch (position){
+                case 0: HomeFragment nHomeFrag = new HomeFragment();
+                    return nHomeFrag;
+                case 1: TweetFragment nTweetFrag = new TweetFragment();
+                    return nTweetFrag;
+                case 2: PreferencesFragment nPrefFrag = new PreferencesFragment();
+                    return  nPrefFrag;
+                default:
+                    return null;
+            }
+
+//        return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return tabNum;
+        }
+
+        public void add(android.support.v4.app.Fragment mFrag, String title) {
+            mFragmentList.add(mFrag);
+            android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+            trans.commit();
+            mFragNameList.add(title);
+        }
+
+        public CharSequence getTabTitle(int position){
+            return mFragNameList.get(position);
+        }
+    }
 
 }
