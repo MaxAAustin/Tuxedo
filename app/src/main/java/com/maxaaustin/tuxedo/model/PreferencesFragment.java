@@ -104,10 +104,12 @@ public class PreferencesFragment extends Fragment implements View.OnClickListene
                 of.show(getFragmentManager(), "orientation dialog");
                 break;
             case R.id.religion_button:
-                getFragmentManager().beginTransaction().commit();
+                com.maxaaustin.tuxedo.ReligionFragment rf = new com.maxaaustin.tuxedo.ReligionFragment();
+                rf.show(getFragmentManager(), "religion dialog");
                 break;
             case R.id.politics_button:
-                getFragmentManager().beginTransaction().commit();
+                com.maxaaustin.tuxedo.PoliticsFragment pf = new com.maxaaustin.tuxedo.PoliticsFragment();
+                pf.show(getFragmentManager(), "politics dialog");
                 break;
         }
 
