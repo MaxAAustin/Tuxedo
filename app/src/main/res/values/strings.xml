@@ -45,6 +45,8 @@
     <string name="political_views">Political Views</string>
     <string name="gender">Gender</string>
     <string name="orientation">Orientation</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
     <!-- Preferences Strings -->
 
 </resources>
